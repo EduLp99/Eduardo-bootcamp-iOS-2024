@@ -255,5 +255,267 @@ var mediaEduardo = alunoEduardo.calcularMedia()
 print("Média das notas de \(alunoEduardo.nome): \(mediaEduardo)")
 
 
+// MARK: - Herança
+
+// Classe PAI
+class Animal {
+
+  var nome: String
+  var cor: String
+  var peso: Double
+
+  init(nome: String, cor: String, peso: Double) {
+    self.nome = nome
+    self.cor = cor
+    self.peso = peso
+  }
+}
+
+// Classe Filha(classe na qual HERDA as propriedades e metodos do pai)
+// A classe filha ela contem TUDO OQUE O PAI (NO NOSSO EXEMPLO É A CLASSE ANIMAL) CONTEM, E + OQUE ELA JÁ CONTEM!
+class Gato: Animal {
+
+  var contemRabo: Bool = true
+  var bebeLeite: Bool
+
+  // toda a vez que você utilizar a palavra super, significa que você está chamando algo da classe PAI(no nosso exemplo, o init da classe Animal)
+  init(bebeLeite: Bool, nome: String, cor: String, peso: Double) {
+    self.bebeLeite = bebeLeite
+    super.init(nome: nome, cor: cor, peso: peso)
+  }
+
+}
+
+var bartolomeu: Gato = Gato(bebeLeite: true, nome: "Bartolomeu", cor: "Marrom", peso: 5)
+
+
+// MARK: - Encapsulamento
+// O encapsulamento é a prática de manter os detalhes de implementação de um objeto escondidos e seguros de acesso externo. Isso é feito usando modificadores de acesso para restringir o acesso às propriedades e métodos de uma classe.
+// De criar variaveis/função get e set
+// get -> pegar/acessar/consultar valor
+// set -> setar novo valor/substituir o valor atual por um novo
+// Tudo que você coloca sendo private -> ele só existe dentro daquele bloco!!
+
+class Computador {
+  private var armazenamento: Int
+  var processador: String
+  var memoriaRam: Int
+
+  init(processador: String, armazenamento: Int, memoriaRam: Int) {
+    self.processador = processador
+    self.armazenamento = armazenamento
+    self.memoriaRam = memoriaRam
+  }
+
+  // função set
+  func melhoriaArmazenamento(armazenamentoNovo: Int) {
+    if validaNovoArmazenamento(novoArmazenamento: armazenamentoNovo) {
+      armazenamento = armazenamentoNovo
+    }
+  }
+
+  // função get
+  func getArmazenamento() -> Int {
+    return armazenamento
+  }
+
+  private func validaNovoArmazenamento(novoArmazenamento: Int) -> Bool {
+    let eValido: Bool = armazenamento < novoArmazenamento
+    return eValido
+  }
+}
+
+var meuComputador: Computador = Computador(processador: "m1", armazenamento: 10, memoriaRam: 10)
+
+// Quando declaramos uma função ou variaveis que sejam private, você não consegue chama-las ou atribuir um novo valor fora do bloco de codigo onde ela se mantem.
+// meuComputador.armazenamento
+
+// set
+meuComputador.melhoriaArmazenamento(armazenamentoNovo: 20)
+
+// get
+//print(meuComputador.getArmazenamento())
+
+
+
+// MARK: - Polimorfismo
+// O polimorfismo permite que objetos de diferentes classes sejam tratados como objetos de uma classe comum. Em outras palavras, polimorfismo permite que um método tenha muitas "formas" diferentes, dependendo do objeto que o chama.
+// override -> sobrescrever -> substituir
+
+
+// O polimorfismo, é nada mais, nada menos que quando se tem uma classe FILHA e você quer utilizar o mesmo nome ou função da classe pai, você precisa colocar o override.
+// Segue o exemplo:
+
+class Veiculo {
+  var velocidadeMaxima: Int
+
+  init(velocidadeMaxima: Int) {
+    self.velocidadeMaxima = velocidadeMaxima
+  }
+
+  func detalhesDoVeiculo() -> String {
+    return "Veiculos com velocidade máxima de \(velocidadeMaxima) hm/h"
+  }
+}
+
+class Carro: Veiculo {
+
+
+  override func detalhesDoVeiculo() -> String {
+    return "Carros com velocidade máxima de \(velocidadeMaxima) hm/h"
+  }
+
+// Neste exemplo estamos chamando a funcao da classe pai para que a gente possa aprender que com a palavra reservada super, ela chama SEMPRE TUDO OQUE É DA CLASSE PAI
+//  override func detalhesDoVeiculo() -> String {
+//    let detalhes: String = super.detalhesDoVeiculo()
+//    return "\(detalhes) teste agora vai"
+//  }
+}
+
+//var corolla: Carro = Carro(velocidadeMaxima: 10)
+//print(corolla.detalhesDoVeiculo())
+
+
+// MARK: - Struct
+// Com a struct, não é obrigatorio deixar o construtor de forma explicita
+// Struct NÃO ACEITA HERENÇA!!!
+// Struct aceita apenas PROTOCOLO em sua hierarquia!!
+// Struct trabalha com VALUE TYPE!!!
+
+struct Documento {
+  var quantidadeDeFolhas: Int
+  var tipo: String
+
+  init(quantidadeDeFolhas: Int, tipo: String) {
+    self.quantidadeDeFolhas = quantidadeDeFolhas
+    self.tipo = tipo
+  }
+}
+
+var minhaCNH: Documento = Documento(quantidadeDeFolhas: 5, tipo: "muito cara")
+var meuRG: Documento = Documento(quantidadeDeFolhas: 2, tipo: "documento importante")
+
+//print("quantidadeDeFolhas CNH: \(minhaCNH.quantidadeDeFolhas)")
+//print("quantidadeDeFolhas RH: \(meuRG.quantidadeDeFolhas)")
+//
+//print("---------------------------------------------------------")
+
+minhaCNH = meuRG
+
+//print("quantidadeDeFolhas CNH: \(minhaCNH.quantidadeDeFolhas)")
+//print("quantidadeDeFolhas RH: \(meuRG.quantidadeDeFolhas)")
+//
+//print("---------------------------------------------------------")
+
+minhaCNH.quantidadeDeFolhas = 50
+meuRG.quantidadeDeFolhas = 100
+
+//print("quantidadeDeFolhas CNH: \(minhaCNH.quantidadeDeFolhas)")
+//print("quantidadeDeFolhas RH: \(meuRG.quantidadeDeFolhas)")
+
+
+// struct
+
+//quantidadeDeFolhas CNH: 5
+//quantidadeDeFolhas RH: 2
+//---------------------------------------------------------
+//quantidadeDeFolhas CNH: 2
+//quantidadeDeFolhas RH: 2
+//---------------------------------------------------------
+//quantidadeDeFolhas CNH: 50
+//quantidadeDeFolhas RH: 100
+
+// class
+
+//quantidadeDeFolhas CNH: 5
+//quantidadeDeFolhas RH: 2
+//---------------------------------------------------------
+//quantidadeDeFolhas CNH: 2
+//quantidadeDeFolhas RH: 2
+//---------------------------------------------------------
+//quantidadeDeFolhas CNH: 100
+//quantidadeDeFolhas RH: 100
+
+
+// MARK: - Inicializadores / Construtores
+
+class Casa {
+
+  var numeroDeQuartos: Int
+  var localizacao: String
+
+  // Designated Initializer
+  // Inicializador principal que deve configurar todas as propriedades.
+  init(numeroDeQuartos: Int, localizacao: String) {
+    self.numeroDeQuartos = numeroDeQuartos
+    self.localizacao = localizacao
+  }
+
+  // Convenience Initializer
+  // Inicializador secundário que fornece valores padrão ou simplifica a criação da instância.
+  convenience init() {
+    self.init(numeroDeQuartos: 5, localizacao: "guaruja")
+  }
+
+  convenience init(numeroDeQuartos: Int) {
+    self.init(numeroDeQuartos: numeroDeQuartos, localizacao: "guaruja")
+  }
+
+  // Failable Initializer
+  // Inicializador que pode falhar e retornar nil se as condições não forem atendidas.
+  init?(numeroDeQuartos: Int, localizacao: String, validaQuartos: Bool) {
+    if validaQuartos == false || numeroDeQuartos < 2 {
+      return nil
+    }
+    self.numeroDeQuartos = numeroDeQuartos
+    self.localizacao = localizacao
+  }
+
+  // Required Initializer
+  // Exige que todas as subclasses implementem este inicializador.
+  required init(localizacao: String) {
+    self.localizacao = localizacao
+    self.numeroDeQuartos = 10
+  }
+}
+
+var minhaCasa: Casa = Casa(numeroDeQuartos: 10, localizacao: "nuporanga")
+var minhaCasa2: Casa = Casa()
+var minhaCasa3: Casa = Casa(numeroDeQuartos: 20)
+var minhaCasa4: Casa = Casa(numeroDeQuartos: 0, localizacao: "", validaQuartos: false) ?? Casa()
+
+
+class CasaDePraia: Casa {
+
+  var distanciaDaPraia: Int
+
+  init(distanciaDaPraia: Int) {
+    self.distanciaDaPraia = distanciaDaPraia
+    super.init(numeroDeQuartos: 10, localizacao: "sp")
+  }
+  
+  required init(localizacao: String) {
+    self.distanciaDaPraia = 1000
+    super.init(numeroDeQuartos: 100, localizacao: localizacao)
+  }
+}
+
+//var minhaCasaDePraia: CasaDePraia = CasaDePraia(distanciaDaPraia: 100)
+var minhaCasaDePraia2: CasaDePraia = CasaDePraia(localizacao: "sp")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
