@@ -49,7 +49,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9e9-9f-7aU" secondAttribute="bottom" constant="15" id="b1h-Ug-1vk"/>
                             <constraint firstItem="9e9-9f-7aU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="dpD-yq-mvs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9e9-9f-7aU" secondAttribute="trailing" constant="24" id="e6I-cm-hNp"/>
-                            <constraint firstItem="BOu-Ee-LVx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="huC-HJ-3Fp"/>
+                            <constraint firstItem="BOu-Ee-LVx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="wlg-Ki-foz"/>
                         </constraints>
                     </view>
                 </viewController>
