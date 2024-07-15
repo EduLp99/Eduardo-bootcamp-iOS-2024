@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LoginViewController: BaseViewController {
 
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
@@ -21,9 +21,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configElements()
+        configEyeButtonGesture()
     }
     
     func configElements() {
+     view.backgroundColor = .orange
      welcomeLabel.font = UIFont.systemFont(ofSize: 25, weight: .bold)
 
       emailTextField.placeholder = "Digite seu email:"
@@ -52,11 +54,50 @@ class ViewController: UIViewController {
       loginButton.layer.cornerRadius = 16
       isEnabledLoginButton(isEnable: false)
         
-      eyePasswordImage.image = UIImage(systemName: "eye.slash")
-      eyeConfirmPasswordImage.image = UIImage(systemName: "eye.slash")
+      eyePasswordImage.image = UIImage(systemName: "eye")
+      eyeConfirmPasswordImage.image = UIImage(systemName: "eye")
 
 
     }
+    
+    @IBAction func tappedLoginButton(_ sender: UIButton) {
+        print("teste")
+    }
+    
+    func configEyeButtonGesture() {
+      let tapEyePassword: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedEyeButton))
+      tapEyePassword.cancelsTouchesInView = false
+      tapEyePassword.numberOfTapsRequired = 1
+      eyePasswordImage.isUserInteractionEnabled = true // precisa ter essa linha pois é imageView
+      eyePasswordImage.addGestureRecognizer(tapEyePassword)
+        
+        let tapEyeConfirmPassword: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedEyePasswordButton))
+        tapEyeConfirmPassword.cancelsTouchesInView = false
+        tapEyeConfirmPassword.numberOfTapsRequired = 1
+        eyeConfirmPasswordImage.isUserInteractionEnabled = true // precisa ter essa linha pois é imageView
+        eyeConfirmPasswordImage.addGestureRecognizer(tapEyeConfirmPassword)
+    }
+    
+    @objc func tappedEyeButton() {
+        if passwordTextField.isSecureTextEntry {
+            passwordTextField.isSecureTextEntry = false
+            eyePasswordImage.image = UIImage(systemName: "eye.slash")
+        } else {
+            passwordTextField.isSecureTextEntry = true
+            eyePasswordImage.image = UIImage(systemName: "eye")
+        }
+    }
+    
+    @objc func tappedEyePasswordButton() {
+        if confirmPasswordTextField.isSecureTextEntry {
+            confirmPasswordTextField.isSecureTextEntry = false
+            eyeConfirmPasswordImage.image = UIImage(systemName: "eye.slash")
+        } else {
+            confirmPasswordTextField.isSecureTextEntry = true
+            eyeConfirmPasswordImage.image = UIImage(systemName: "eye")
+        }
+    }
+    
     
     func isEnabledLoginButton(isEnable: Bool) {
       loginButton.isEnabled = isEnable
@@ -77,7 +118,7 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: UITextFieldDelegate {
+extension LoginViewController: UITextFieldDelegate {
     
       func textFieldDidBeginEditing(_ textField: UITextField) {
         print(#function)
@@ -100,7 +141,7 @@ extension ViewController: UITextFieldDelegate {
         if let text = textField.text as? NSString {
           let newText = text.replacingCharacters(in: range, with: string)
           textField.text = newText
-            if isValidEmail(emailTextField.text ?? "") && isValidPassword(passwordTextField.text ?? "") && isValidPassword(confirmPasswordTextField.text ?? "") {
+            if isValidEmail(emailTextField.text ?? "") && isValidPassword(passwordTextField.text ?? "") && passwordTextField.text ?? "" == confirmPasswordTextField.text ?? "" {
             isEnabledLoginButton(isEnable: true)
           } else {
             isEnabledLoginButton(isEnable: false)
