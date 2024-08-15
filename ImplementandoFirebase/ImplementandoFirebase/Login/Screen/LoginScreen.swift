@@ -9,6 +9,7 @@ import UIKit
 
 protocol LoginScreenProtocol: AnyObject {
     func tappedLoginButton()
+    func tappedRegisterButton()
 }
 
 class LoginScreen: UIView {
@@ -98,6 +99,20 @@ class LoginScreen: UIView {
         delegate?.tappedLoginButton()
     }
     
+    lazy var registerButton: UIButton = {
+      let button = UIButton(type: .system)
+      button.translatesAutoresizingMaskIntoConstraints = false
+      button.setTitle("Não tem conta? Cadastre-se", for: .normal)
+      button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+      button.setTitleColor(.systemBlue, for: .normal)
+      button.addTarget(self, action: #selector(tappedRegisterButton), for: .touchUpInside)
+      return button
+    }()
+
+    @objc func tappedRegisterButton() {
+        delegate?.tappedRegisterButton()
+    }
+    
     init() {
         super.init(frame: .zero)
         backgroundColor = .white
@@ -117,6 +132,7 @@ class LoginScreen: UIView {
         addSubview(secondLoginlabel)
         addSubview(googleButton)
         addSubview(facebookButton)
+        addSubview(registerButton)
     }
     
     func configConstraints() {
@@ -152,7 +168,10 @@ class LoginScreen: UIView {
             facebookButton.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 30),
             facebookButton.centerYAnchor.constraint(equalTo: googleButton.centerYAnchor),
             facebookButton.widthAnchor.constraint(equalToConstant: 80),
-            facebookButton.heightAnchor.constraint(equalToConstant: 50)
+            facebookButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            registerButton.topAnchor.constraint(equalTo: facebookButton.bottomAnchor, constant: 40),
+            registerButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             
         ])
     }

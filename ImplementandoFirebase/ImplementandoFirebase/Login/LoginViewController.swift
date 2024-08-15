@@ -11,31 +11,53 @@ import FirebaseAuth
 class LoginViewController: UIViewController {
     
     var screen: LoginScreen?
+    var viewModel: LoginViewModel = LoginViewModel()
+    var registerVC: RegisterViewController = RegisterViewController()
     
     override func loadView() {
         screen = LoginScreen()
         view = screen
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         screen?.delegate = self
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okButton)
+        present(alertController, animated: true)
     }
 }
 
 extension LoginViewController: LoginScreenProtocol {
     func tappedLoginButton() {
-        let email: String = screen?.emailTextField.text ?? ""
-        let password: String = screen?.passwordTextField.text ?? ""
-        
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-            if let error = error {
-                print("Deu Erro -> \(error.localizedDescription)")
-                return
-            }
-            
-            print("Login feito com sucesso")
-            
+        guard let email: String = screen?.emailTextField.text,
+              let password: String = screen?.passwordTextField.text,
+              !email.isEmpty,
+              !password.isEmpty else {
+            showAlert(title: "Atenção!", message: "Por favor, preencha todos os campos")
+            return
         }
+        
+        viewModel.fetchLogin(email: email, password: password)
+    }
+    
+    
+    
+    func tappedRegisterButton() {
+        navigationController?.pushViewController(registerVC, animated: true)
+    }
+}
+
+extension LoginViewController: LoginViewModelProtocol {
+    func successLogin() {
+        print("Showw, login feito com sucesso!")
+    }
+    
+    func errorLogin(title: String, message: String) {
+        showAlert(title: title, message: message)
     }
 }
