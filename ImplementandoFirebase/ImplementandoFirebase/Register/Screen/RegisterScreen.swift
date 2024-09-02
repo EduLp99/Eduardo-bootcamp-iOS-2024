@@ -9,6 +9,7 @@ import UIKit
 
 protocol RegisterScreenProtocol: AnyObject {
     func tappedBackButton()
+    func tappedRegisterButton()
 }
 
 class RegisterScreen: UIView {
@@ -63,7 +64,7 @@ class RegisterScreen: UIView {
         button.backgroundColor = .blue
         button.clipsToBounds = true
         button.layer.cornerRadius = 8
-        //button.addTarget(self, action: #selector(tappedRegisterButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tappedRegisterButton), for: .touchUpInside)
         return button
     }()
     
@@ -79,6 +80,10 @@ class RegisterScreen: UIView {
         button.addTarget(self, action: #selector(tappedBackButton), for: .touchUpInside)
         return button
     }()
+    
+    @objc func tappedRegisterButton() {
+        delegate?.tappedRegisterButton()
+    }
     
     @objc func tappedBackButton() {
         delegate?.tappedBackButton()

@@ -19,9 +19,14 @@ class LoginViewController: UIViewController {
         view = screen
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         screen?.delegate = self
+        viewModel.delegate = self
     }
     
     func showAlert(title: String, message: String) {

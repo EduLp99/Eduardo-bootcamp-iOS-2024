@@ -12,6 +12,7 @@
 		55507D412C6EBF1C004010BD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55507D402C6EBF1C004010BD /* RegisterViewController.swift */; };
 		55507D462C6EBF6D004010BD /* RegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55507D452C6EBF6D004010BD /* RegisterScreen.swift */; };
 		5579601A2C6D6DD40042AB63 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 557960192C6D6DD40042AB63 /* GoogleService-Info.plist */; };
+		557FBA772C71119A00932FF5 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557FBA762C71119A00932FF5 /* RegisterViewModel.swift */; };
 		55B3ADE22C6AD41000B16670 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B3ADE12C6AD41000B16670 /* AppDelegate.swift */; };
 		55B3ADE42C6AD41000B16670 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B3ADE32C6AD41000B16670 /* SceneDelegate.swift */; };
 		55B3ADE62C6AD41000B16670 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B3ADE52C6AD41000B16670 /* LoginViewController.swift */; };
@@ -27,6 +28,7 @@
 		55507D402C6EBF1C004010BD /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		55507D452C6EBF6D004010BD /* RegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterScreen.swift; sourceTree = "<group>"; };
 		557960192C6D6DD40042AB63 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		557FBA762C71119A00932FF5 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		55B3ADDE2C6AD41000B16670 /* ImplementandoFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImplementandoFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B3ADE12C6AD41000B16670 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55B3ADE32C6AD41000B16670 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			children = (
 				55507D422C6EBF39004010BD /* Screen */,
 				55507D402C6EBF1C004010BD /* RegisterViewController.swift */,
+				557FBA762C71119A00932FF5 /* RegisterViewModel.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				55B3ADE62C6AD41000B16670 /* LoginViewController.swift in Sources */,
 				55B3ADF82C6AD53F00B16670 /* LoginScreen.swift in Sources */,
 				55B3ADE22C6AD41000B16670 /* AppDelegate.swift in Sources */,
+				557FBA772C71119A00932FF5 /* RegisterViewModel.swift in Sources */,
 				55507D462C6EBF6D004010BD /* RegisterScreen.swift in Sources */,
 				55507D412C6EBF1C004010BD /* RegisterViewController.swift in Sources */,
 				55507D3E2C6EBCBE004010BD /* LoginViewModel.swift in Sources */,
