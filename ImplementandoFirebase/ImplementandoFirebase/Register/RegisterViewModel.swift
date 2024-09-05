@@ -17,7 +17,7 @@ class RegisterViewModel {
     
     weak var delegate: RegisterViewModelProtocol?
     
-    func register(email: String, password: String) {
+    func fetchRegister(email: String, password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
                 guard let self = self else { return }
                 

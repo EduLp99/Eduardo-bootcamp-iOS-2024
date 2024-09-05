@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4145045CE250E61BAAD870A5 /* Pods_ImplementandoFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29F37F7228F74D8E5E0B76CF /* Pods_ImplementandoFirebase.framework */; };
+		551E9C262C86BFE200105717 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551E9C252C86BFE200105717 /* Loading.swift */; };
 		55507D3E2C6EBCBE004010BD /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55507D3D2C6EBCBE004010BD /* LoginViewModel.swift */; };
 		55507D412C6EBF1C004010BD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55507D402C6EBF1C004010BD /* RegisterViewController.swift */; };
 		55507D462C6EBF6D004010BD /* RegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55507D452C6EBF6D004010BD /* RegisterScreen.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		29F37F7228F74D8E5E0B76CF /* Pods_ImplementandoFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImplementandoFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B3682D77778E137236A2ABC /* Pods-ImplementandoFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImplementandoFirebase.release.xcconfig"; path = "Target Support Files/Pods-ImplementandoFirebase/Pods-ImplementandoFirebase.release.xcconfig"; sourceTree = "<group>"; };
+		551E9C252C86BFE200105717 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		55507D3D2C6EBCBE004010BD /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		55507D402C6EBF1C004010BD /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		55507D452C6EBF6D004010BD /* RegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterScreen.swift; sourceTree = "<group>"; };
@@ -52,6 +54,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		551E9C242C86BFD400105717 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				551E9C252C86BFE200105717 /* Loading.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
 		55507D3F2C6EBE63004010BD /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +101,7 @@
 		55B3ADE02C6AD41000B16670 /* ImplementandoFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				551E9C242C86BFD400105717 /* Loading */,
 				55507D3F2C6EBE63004010BD /* Register */,
 				55B3ADF62C6AD4ED00B16670 /* Login */,
 				55B3ADE12C6AD41000B16670 /* AppDelegate.swift */,
@@ -254,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55B3ADE62C6AD41000B16670 /* LoginViewController.swift in Sources */,
+				551E9C262C86BFE200105717 /* Loading.swift in Sources */,
 				55B3ADF82C6AD53F00B16670 /* LoginScreen.swift in Sources */,
 				55B3ADE22C6AD41000B16670 /* AppDelegate.swift in Sources */,
 				557FBA772C71119A00932FF5 /* RegisterViewModel.swift in Sources */,

@@ -57,13 +57,13 @@ extension RegisterViewController: RegisterScreenProtocol {
             return
         }
         
-        viewModel.register(email: email, password: password)
+        viewModel.fetchRegister(email: email, password: password)
     }
 }
 
 extension RegisterViewController: RegisterViewModelProtocol {
     func successRegister() {
-        print("Showw, cadastro feito com sucesso!")
+        showAlert(title: "Parabéns", message: "Cadastro realizado com sucesso!")
     }
     
     func errorRegister(title: String, message: String) {
