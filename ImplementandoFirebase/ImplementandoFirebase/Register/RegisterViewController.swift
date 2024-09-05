@@ -11,6 +11,7 @@ class RegisterViewController: UIViewController {
     
     var screen: RegisterScreen?
     var viewModel: RegisterViewModel = RegisterViewModel()
+    var loading: Loading?
     
     override func loadView() {
         screen = RegisterScreen()
@@ -25,6 +26,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         screen?.delegate = self
         viewModel.delegate = self
+        loading = Loading(viewController: self)
     }
     
     func showAlert(title: String, message: String) {
@@ -62,6 +64,14 @@ extension RegisterViewController: RegisterScreenProtocol {
 }
 
 extension RegisterViewController: RegisterViewModelProtocol {
+    func loading(start: Bool) {
+        if start {
+            loading?.start(message: "Carregando..")
+        } else {
+            loading?.stop()
+        }
+    }
+    
     func successRegister() {
         showAlert(title: "Parabéns", message: "Cadastro realizado com sucesso!")
     }

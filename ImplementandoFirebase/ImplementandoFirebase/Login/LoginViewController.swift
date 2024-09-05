@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
     var screen: LoginScreen?
     var viewModel: LoginViewModel = LoginViewModel()
     var registerVC: RegisterViewController = RegisterViewController()
+    var loading: Loading?
     
     override func loadView() {
         screen = LoginScreen()
@@ -27,6 +28,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         screen?.delegate = self
         viewModel.delegate = self
+        loading = Loading(viewController: self)
     }
     
     func showAlert(title: String, message: String) {
@@ -58,6 +60,14 @@ extension LoginViewController: LoginScreenProtocol {
 }
 
 extension LoginViewController: LoginViewModelProtocol {
+    func loading(start: Bool) {
+        if start {
+            loading?.start(message: "Carregando...")
+        } else {
+            loading?.stop()
+        }
+    }
+    
     func successLogin() {
         print("Showw, login feito com sucesso!")
     }
