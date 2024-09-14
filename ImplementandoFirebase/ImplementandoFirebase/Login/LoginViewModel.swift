@@ -20,12 +20,14 @@ class LoginViewModel {
     
     func fetchLogin(email: String, password: String) {
         // start loading
-        delegate?.loading(start: true)
+        //delegate?.loading(start: true)
+        LoadingLottie.shared.start()
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             guard let self else { return }
-            
+            LoadingLottie.shared.stop()
+
             // stop loading
-            delegate?.loading(start: false)
+            //delegate?.loading(start: false)
             
             // Opção 1
             guard error == nil else {

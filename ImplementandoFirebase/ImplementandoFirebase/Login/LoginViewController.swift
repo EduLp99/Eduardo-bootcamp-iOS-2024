@@ -62,9 +62,11 @@ extension LoginViewController: LoginScreenProtocol {
 extension LoginViewController: LoginViewModelProtocol {
     func loading(start: Bool) {
         if start {
-            loading?.start(message: "Carregando...")
+            //loading?.start(message: "Carregando...")
+            LoadingShared.shared.start(message: "Carregando...")
         } else {
-            loading?.stop()
+            LoadingShared.shared.stop()
+            //loading?.stop()
         }
     }
     
